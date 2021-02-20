@@ -1,24 +1,23 @@
 <div class="container">
     <mat-card class="card">
         <mat-card-content>
-            <form class="example-form" novalidate [formGroup]="logon">
-                <div class="div_imagen">
-
+            <form class="example-form" novalidate [formGroup]="isesion">
+            <!--     <div class="div_imagen">
                     <img class="responsiveimagen" mat-card-image src="https://lablace.com/ZLOGOS/noltik.png" alt="Logo">
-                </div>
-                <mat-form-field class="center " appearance="outline">
+                </div>-->
+                <mat-form-field class="center" appearance="outline">
                     <mat-label>Usuario</mat-label>
-                    <input matInput formControlName="username">
+                    <input matInput formControlName="usuario">
                 </mat-form-field>
 
                 <mat-form-field class="center" appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" formControlName="password">
+                    <input matInput type="contrasena" formControlName="contrasena">
                 </mat-form-field>
 
                 <mat-card-actions class="center">
-                    <form novalidate (ngSubmit)="login()" [formGroup]="logon">
-                        <button mat-flat-button type="submit" color="primary">Acceder</button>
+                    <form novalidate (ngSubmit)="entrar()" [formGroup]="isesion">
+                        <button mat-flat-button type="submit" color="primary">Ingresar</button>
                     </form>
                 </mat-card-actions>
 
