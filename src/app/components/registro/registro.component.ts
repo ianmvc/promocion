@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { Votante } from '../../common/votante';
-import { RegistroService } from '../../services/registro.service';
+import { RegistroService } from '../../services/registro/registro.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 

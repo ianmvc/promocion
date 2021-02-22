@@ -1,8 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { RegistroService } from '../../services/registro.service';
+import { RegistroService } from '../../services/registro/registro.service';
 import { Votante } from '../../common/votante';
+import { TokenService } from '../../services/token/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -18,8 +19,13 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  isLogin = false;
+  roles: string[];
+  authority: string;
   constructor(
-    private registroService: RegistroService
+    private registroService: RegistroService,
+    private tokenService: TokenService,
+    private router: Router
   ) { }
   ngAfterViewInit(): void {
     //this.dataSource.paginator = this.paginator;
@@ -27,6 +33,19 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
 
   ngOnInit(): void {
     this.lista();
+    if (this.tokenService.getToken()) {
+      this.isLogin = true;
+      this.roles = [];
+      this.roles = this.tokenService.getAuthorities();
+      this.roles.every(rol => {
+        if (rol === 'ROLE_ADMIN') {
+          this.authority = 'admin';
+          return false;
+        }
+        this.authority = 'user';
+        return true;
+      });
+    }
   }
 
   lista(): void {
@@ -38,6 +57,13 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
         console.log(err);
       }
     );
+  }
+
+  logOut(): void {
+    this.tokenService.logOut();
+    this.isLogin = false;
+    this.authority = '';
+    this.router.navigate(['home']);
   }
 
 }

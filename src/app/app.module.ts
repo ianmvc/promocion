@@ -11,6 +11,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DialogComponent } from './common/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { APP_ROUTING } from './app.routes';
 
@@ -20,8 +22,7 @@ import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { VisualizarComponent } from './components/visualizar/visualizar.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { DialogComponent } from './common/dialog/dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { interceptorProvider } from './services/interceptor/interceptor.service'
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

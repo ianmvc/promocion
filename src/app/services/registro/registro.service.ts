@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Votante } from '../common/votante';
-import { ApiUrl } from '../globals';
+import { Votante } from '../../common/votante';
+import { ApiUrl } from '../../globals';
 
 const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})};
 

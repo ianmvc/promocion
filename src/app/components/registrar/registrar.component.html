@@ -1,6 +1,6 @@
 <div class="container">
   <button mat-flat-button type="submit" color="primary" routerLink="/registro">Agregar</button>
-  <button mat-stroked-button type="submit" color="secondary" routerLink="/" class="button">Salir</button>
+  <button mat-stroked-button type="submit" color="secondary" (click)="logOut()" class="button">Salir</button>
   <div class="card">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
