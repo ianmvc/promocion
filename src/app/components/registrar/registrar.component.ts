@@ -51,7 +51,7 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
   lista(): void {
     this.registroService.lista().subscribe(data => {
       this.dataSource = data;
-      console.log(this.dataSource.length)
+      //console.log(this.dataSource.length)
     },
       (err: any) => {
         console.log(err);
