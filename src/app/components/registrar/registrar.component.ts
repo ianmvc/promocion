@@ -46,6 +46,8 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
         return true;
       });
     }
+    else
+    this.router.navigate(['']);
   }
 
   lista(): void {

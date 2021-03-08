@@ -5,6 +5,7 @@ import { Votante } from '../../common/votante';
 import { RegistroService } from '../../services/registro/registro.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../common/dialog/dialog.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
@@ -21,10 +22,15 @@ export class RegistroComponent implements OnInit {
   mensajeOK = '';
   altavotante: FormGroup;
   loading = false;
+
+  fecha1: string = '';
+  myDate = new Date();
+
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private serviceVotante: RegistroService
+    private serviceVotante: RegistroService,
+    private datePipe: DatePipe,
   ) { }
 
 
@@ -34,11 +40,14 @@ export class RegistroComponent implements OnInit {
       domicilio: new FormControl("", [Validators.required]),
       telcel: new FormControl("", [Validators.required]), 
       telcasa: new FormControl("", [Validators.required]),
-      seccion: new FormControl("", [Validators.required])
+      seccion: new FormControl("", [Validators.required]),
+      fecha_agregado: new FormControl("", [Validators.required])
     });
   }
 
   onCreate(): void {
+    this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
+    this.form.fecha_agregado = this.fecha1
     this.serviceVotante.crear(this.form).subscribe(data => {
       this.mensajeOK = data.mensaje;
       this.openDialog(this.mensajeOK);

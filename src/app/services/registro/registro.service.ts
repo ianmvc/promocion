@@ -20,7 +20,7 @@ export class RegistroService {
     }
   
     public detalle(id: number): Observable<Votante> {
-      return this.httpClient.get<Votante>(ApiUrl + `detalle/${id}`, cabecera);
+      return this.httpClient.get<Votante>(ApiUrl + 'detalle/' + id, cabecera);
     }
   
     public crear(producto: Votante): Observable<any> {
@@ -28,10 +28,10 @@ export class RegistroService {
     }
   
     public editar(producto: Votante, id: number): Observable<any> {
-      return this.httpClient.put<any>(ApiUrl + `actualizar/${id}`, producto, cabecera);
+      return this.httpClient.put<any>(ApiUrl + 'actualizar/' + id, producto, cabecera);
     }
   
     public borrar(id: number): Observable<any> {
-      return this.httpClient.delete<any>(ApiUrl + `borrar/${id}`, cabecera);
+      return this.httpClient.delete<any>(ApiUrl + 'borrar/' + id, cabecera);
     }
 }

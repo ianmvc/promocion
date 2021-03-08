@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -12,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DialogComponent } from './common/dialog/dialog.component';
+import { DialogConfirmComponent } from './common/dialog-confirm/dialog-confirm.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { APP_ROUTING } from './app.routes';
@@ -31,7 +33,8 @@ import { interceptorProvider } from './services/interceptor/interceptor.service'
     RegistrarComponent,
     VisualizarComponent,
     RegistroComponent,
-    DialogComponent
+    DialogComponent,
+    DialogConfirmComponent
   ],
   imports: [
     APP_ROUTING,
@@ -49,7 +52,7 @@ import { interceptorProvider } from './services/interceptor/interceptor.service'
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [interceptorProvider],
+  providers: [interceptorProvider, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

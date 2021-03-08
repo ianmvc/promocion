@@ -1,32 +1,30 @@
-<div *ngIf="isLogged; else loggedOut">
-    Has iniciado sesión como:
-    {{ roles }}
+<div class="header"> </div>
+<div *ngIf="isLogged; else loggedOut"> Has iniciado sesión como: {{roles}}
 </div>
-
 <ng-template #loggedOut>
-    <div *ngIf="!isLogged" class="container">
-      <div class="card">
-        <h2>Iniciar Sesión</h2>
-        <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="input">
-                  <mat-label for="nombreusuario">Usuario</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="nombreusuario" [(ngModel)]="form.nombreUsuario" 
-                    autocomplete="off" required>
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-              <mat-form-field appearance="outline" class="input">
-                <mat-label for="nombreusuario">Contraseña</mat-label>
-                <input matInput="matInput" type="password" class="form-control" name="password" [(ngModel)]="form.password" autocomplete="off" required>
-              </mat-form-field>
-            </div>
-            <div class="form-group">
-                <button mat-raised-button="mat-raised-button" color="primary" [disabled]="!f.valid">Login</button>
-                <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Fail al loguearse:
-                    {{ errorMsg }}</div>
-            </div>
-        </form>
-      </div>
+  <div *ngIf="!isLogged" class="container">
+    <div class="card">
+      <h2>Iniciar Sesión</h2>
+      <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label for="nombreusuario">Usuario</mat-label> <input matInput="matInput" type="text"
+              class="form-control" name="nombreusuario" [(ngModel)]="form.nombreUsuario" autocomplete="off" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="outline" class="input">
+            <mat-label for="nombreusuario">Contraseña</mat-label> <input matInput="matInput" type="password"
+              class="form-control" name="password" [(ngModel)]="form.password" autocomplete="off" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group"> <button mat-raised-button="mat-raised-button" color="primary"
+            [disabled]="!f.valid">Login</button>
+          <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Fail al loguearse: {{errorMsg}}
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </ng-template>
+<div class="footer"> </div>

@@ -5,4 +5,7 @@ export class Votante {
     telcel: string;
     telcasa: string;
     seccion: string;
+    validado: string;
+    fecha_agregado: string;
+    fecha_validado: string;
 }
