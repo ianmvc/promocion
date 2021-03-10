@@ -1,7 +1,3 @@
-table {
-    width: 100%;
-}
-
 .container{
     padding-top: 30px;
 }
@@ -12,4 +8,26 @@ table {
 
 .button{
     float: right;
+}
+
+table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w-75 {
+    width: 75px;
+    text-align: center !important;
+}
+
+th {
+    padding-left: 15px !important;
+}
+.mat-table-sticky:first-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+    border-left: 1px solid #e0e0e0;
 }

@@ -36,11 +36,16 @@ export class IngresarComponent implements OnInit {
             this.isLogged = true;
             this.isLoginFail = false;
             this.roles = this.tokenService.getAuthorities();
-            //console.log(this.roles)
+            console.log(this.roles)
             if (this.roles[0] == "ROLE_USER")
                 this.router.navigateByUrl("/registrar");
-             else 
+             else{
+                if (this.roles[0] == "ROLE_USER")
+                this.router.navigateByUrl("/registrar");
+                else
                 this.router.navigateByUrl("/visualizar");
+             }
+                
             
         }, (err : any) => {
             this.isLogged = false;
