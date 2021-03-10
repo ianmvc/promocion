@@ -35,3 +35,24 @@
     bottom: 10px;
     position: absolute;
 }
+
+@media (max-width: 900px) {
+    .card {
+        margin-left: 25ex;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        background-color:white;
+        padding: 0px;
+    }
+
+    .card {
+        margin-left: 15ex;
+    }
+
+    .input {
+        width: 190px;
+    }
+}

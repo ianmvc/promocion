@@ -48,6 +48,8 @@ export class RegistroComponent implements OnInit {
   onCreate(): void {
     this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
     this.form.fecha_agregado = this.fecha1
+    this.form.validado = "false"
+    console.log(this.form)
     this.serviceVotante.crear(this.form).subscribe(data => {
       this.mensajeOK = data.mensaje;
       this.openDialog(this.mensajeOK);
