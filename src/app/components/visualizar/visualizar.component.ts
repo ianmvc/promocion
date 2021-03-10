@@ -29,6 +29,7 @@ export class VisualizarComponent  implements OnInit, AfterViewInit  {
   numberid: number;
   mensajeOK = '';
   ideditar = "";
+  length: number;
 
   fecha1: string = '';
   myDate = new Date();
@@ -63,6 +64,7 @@ export class VisualizarComponent  implements OnInit, AfterViewInit  {
   lista(): void {
     this.serviceVotante.lista().subscribe(data => {
       this.dataSource = data;
+      this.length = this.dataSource.length;
       //console.log(this.dataSource.length)
     },
       (err: any) => {

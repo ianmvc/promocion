@@ -22,6 +22,7 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
   isLogin = false;
   roles: string[];
   authority: string;
+  length: number;
   constructor(
     private registroService: RegistroService,
     private tokenService: TokenService,
@@ -53,6 +54,7 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
   lista(): void {
     this.registroService.lista().subscribe(data => {
       this.dataSource = data;
+      this.length = this.dataSource.length;
       //console.log(this.dataSource.length)
     },
       (err: any) => {

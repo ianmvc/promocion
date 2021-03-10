@@ -35,14 +35,14 @@ export class RegistroComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.altavotante = new FormGroup({
-      nombre: new FormControl("", [Validators.required]),
-      domicilio: new FormControl("", [Validators.required]),
-      telcel: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]), 
-      telcasa: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]),
-      seccion: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      fecha_agregado: new FormControl("")
-    });
+    //this.form = new FormGroup({
+      //nombre: new FormControl("", [Validators.required]),
+      //domicilio: new FormControl("", [Validators.required]),
+      //telcel: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]), 
+      //telcasa: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]),
+      //seccion: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      //fecha_agregado: new FormControl("")
+    //});
   }
 
   onCreate(): void {
