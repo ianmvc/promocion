@@ -14,7 +14,7 @@ export class IngresarComponent implements OnInit {
     isLogged = false;
     isLoginFail = false;
     roles : string[] = [];
-    errorMsg = '';
+    errorMsg = 'Credenciales Invalidas';
 
     constructor(private router : Router, private authService : AuthService, private tokenService : TokenService) {}
 
@@ -39,14 +39,9 @@ export class IngresarComponent implements OnInit {
             console.log(this.roles)
             if (this.roles[0] == "ROLE_USER")
                 this.router.navigateByUrl("/registrar");
-             else{
-                if (this.roles[0] == "ROLE_USER")
-                this.router.navigateByUrl("/registrar");
-                else
-                this.router.navigateByUrl("/visualizar");
-             }
-                
-            
+             else
+                this.router.navigateByUrl("/visualizar")
+
         }, (err : any) => {
             this.isLogged = false;
             this.isLoginFail = true;

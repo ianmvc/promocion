@@ -40,12 +40,13 @@
     .card {
         margin-left: 25ex;
     }
-}
 
-@media (max-width: 600px) {
     .footer {
         padding: 0px;
     }
+}
+
+@media (max-width: 600px) {
 
     .card {
         margin-left: 15ex;
