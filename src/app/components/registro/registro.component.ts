@@ -6,6 +6,7 @@ import { RegistroService } from '../../services/registro/registro.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { DatePipe } from '@angular/common';
+import {TokenService} from '../../services/token/token.service';
 
 @Component({
   selector: 'app-registro',
@@ -22,6 +23,7 @@ export class RegistroComponent implements OnInit {
   mensajeOK = '';
   altavotante: FormGroup;
   loading = false;
+  username = '';
 
   fecha1: string = '';
   myDate = new Date();
@@ -31,6 +33,7 @@ export class RegistroComponent implements OnInit {
     private dialog: MatDialog,
     private serviceVotante: RegistroService,
     private datePipe: DatePipe,
+    private tokenService : TokenService
   ) { }
 
 
@@ -49,7 +52,11 @@ export class RegistroComponent implements OnInit {
     this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
     this.form.fecha_agregado = this.fecha1
     this.form.validado = "false"
-    console.log(this.form)
+    //console.log(this.form)
+    this.username = this.tokenService.getUserName();
+    this.form.usuario = this.username
+    console.log(this.username) 
+    console.log(this.form) 
     this.serviceVotante.crear(this.form).subscribe(data => {
       this.mensajeOK = data.mensaje;
       this.openDialog(this.mensajeOK);

@@ -16,7 +16,9 @@ export class IngresarComponent implements OnInit {
     roles : string[] = [];
     errorMsg = 'Credenciales Invalidas';
 
-    constructor(private router : Router, private authService : AuthService, private tokenService : TokenService) {}
+    constructor(private router : Router, 
+        private authService : AuthService, 
+        private tokenService : TokenService) {}
 
     ngOnInit(): void {
         if (this.tokenService.getToken()) 
@@ -36,7 +38,7 @@ export class IngresarComponent implements OnInit {
             this.isLogged = true;
             this.isLoginFail = false;
             this.roles = this.tokenService.getAuthorities();
-            console.log(this.roles)
+            //console.log(this.roles)
             if (this.roles[0] == "ROLE_USER")
                 this.router.navigateByUrl("/registrar");
              else

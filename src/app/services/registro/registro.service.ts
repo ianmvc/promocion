@@ -34,4 +34,8 @@ export class RegistroService {
     public borrar(id: number): Observable<any> {
       return this.httpClient.delete<any>(ApiUrl + 'borrar/' + id, cabecera);
     }
+
+    public detalleUser(nombreUser: String): Observable<Votante> {
+      return this.httpClient.get<Votante>(ApiUrl + 'usuario/' + nombreUser, cabecera);
+    }
 }

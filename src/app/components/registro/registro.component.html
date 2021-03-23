@@ -41,6 +41,34 @@
                 </mat-form-field>
             </div>
             <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="colonia">Colonia</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="colonia"
+                        [(ngModel)]="form.colonia" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="instragram">Instagram</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="instragram"
+                        [(ngModel)]="form.instragram" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="facebook">Facebook</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="facebook"
+                        [(ngModel)]="form.facebook" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="red_social">Red Social</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="red_social"
+                        [(ngModel)]="form.red_social" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
                 <button mat-raised-button="mat-raised-button" color="primary" [disabled]="!f.valid">Crear</button>
             </div>
         </form>

@@ -4,7 +4,9 @@
 <ng-template #loggedOut>
   <div *ngIf="!isLogged" class="container">
     <div class="card">
-      <h2>Iniciar Sesión</h2>
+      <img class="responsiveimagen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PRI_logo_%28Mexico%29.svg/1200px-PRI_logo_%28Mexico%29.svg.png"
+                        >
+      <h2 class="font">Iniciar Sesión</h2>
       <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
         <div class="form-group">
           <mat-form-field appearance="outline" class="input">

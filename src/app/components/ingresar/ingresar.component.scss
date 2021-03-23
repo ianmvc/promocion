@@ -7,6 +7,17 @@
     // background-color: whitesmoke;
 }
 
+.font{
+    font-family: Verdana;
+}
+
+.responsiveimagen {
+    width: 25%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
 .card {
     width: 800px;
     margin: 0 auto;
@@ -43,6 +54,11 @@
 
     .footer {
         padding: 0px;
+    }
+
+    .responsiveimagen {
+        width: 5%;
+        margin-left: 20ex;
     }
 }
 
