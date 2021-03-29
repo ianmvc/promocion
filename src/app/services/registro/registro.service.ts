@@ -18,6 +18,10 @@ export class RegistroService {
     public lista(): Observable<Votante[]> {
       return this.httpClient.get<Votante[]>(ApiUrl + 'lista', cabecera);
     }
+
+    public listaUsuario(promotor: String): Observable<Votante[]> {
+      return this.httpClient.get<Votante[]>(ApiUrl + 'lista/' + promotor, cabecera);
+    }
   
     public detalle(id: number): Observable<Votante> {
       return this.httpClient.get<Votante>(ApiUrl + 'detalle/' + id, cabecera);

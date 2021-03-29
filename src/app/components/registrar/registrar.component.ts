@@ -23,6 +23,8 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
   roles: string[];
   authority: string;
   length: number;
+  
+  username = '';
   constructor(
     private registroService: RegistroService,
     private tokenService: TokenService,
@@ -52,7 +54,8 @@ export class RegistrarComponent implements OnInit, AfterViewInit  {
   }
 
   lista(): void {
-    this.registroService.lista().subscribe(data => {
+    this.username = this.tokenService.getUserName();
+    this.registroService.listaUsuario(this.username).subscribe(data => {
       this.dataSource = data;
       this.length = this.dataSource.length;
       //console.log(this.dataSource.length)

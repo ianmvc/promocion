@@ -24,7 +24,8 @@ import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { VisualizarComponent } from './components/visualizar/visualizar.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { interceptorProvider } from './services/interceptor/interceptor.service'
+import { interceptorProvider } from './services/interceptor/interceptor.service';
+import { EditComponent } from './components/edit/edit.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { interceptorProvider } from './services/interceptor/interceptor.service'
     VisualizarComponent,
     RegistroComponent,
     DialogComponent,
-    DialogConfirmComponent
+    DialogConfirmComponent,
+    EditComponent
   ],
   imports: [
     APP_ROUTING,
