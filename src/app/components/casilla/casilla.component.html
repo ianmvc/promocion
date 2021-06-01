@@ -1,1 +1,69 @@
-<p>casilla works!</p>
+<div class="header"> </div>
+
+<div class="container">
+  <button mat-flat-button type="submit" color="secondary" (click)="logOut()">Salir</button>
+  <div class="card">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element" > {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <button mat-flat-button>
+            <td mat-cell *matCellDef="let element" [routerLink]="['/edit', element.id]">{{element.nombreVotante}}</td></button>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilio">
+          <th mat-header-cell *matHeaderCellDef> Domicilio </th>
+          <td mat-cell *matCellDef="let element"> {{element.domicilio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telcel">
+          <th mat-header-cell *matHeaderCellDef> Telefono Celular </th>
+          <td mat-cell *matCellDef="let element"> {{element.telcel}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telcasa">
+          <th mat-header-cell *matHeaderCellDef> Telefono Casa </th>
+          <td mat-cell *matCellDef="let element"> {{element.telcasa}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seccion">
+          <th mat-header-cell *matHeaderCellDef> Sección </th>
+          <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha_agregado">
+          <th mat-header-cell *matHeaderCellDef> Fecha Agregado </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha_agregado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha_validado">
+          <th mat-header-cell *matHeaderCellDef> Fecha Validado </th>
+          <td mat-cell *matCellDef="let element"> {{element.fecha_validado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="validado">
+          <th mat-header-cell *matHeaderCellDef> Validado </th>
+          <td mat-cell *matCellDef="let element"> <button mat-raised-button="mat-raised-button" color="primary" 
+            (click)="validar(element.id)" [disabled]="element.validado != false">Validar</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [length]="length"
+                     [pageSize]="10" 
+                     [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+<div class="footer">
+
+</div>

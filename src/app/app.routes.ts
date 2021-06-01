@@ -4,6 +4,7 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
 import { VisualizarComponent } from './components/visualizar/visualizar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { EditComponent } from './components/edit/edit.component';
+import { CasillaComponent } from './components/casilla/casilla.component';
 
 const APP_ROUTES: Routes = [
     { path: 'ingresar', component: IngresarComponent },
@@ -11,6 +12,7 @@ const APP_ROUTES: Routes = [
     { path: 'visualizar', component: VisualizarComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'edit/:id', component: EditComponent },
+    { path: 'casilla', component: CasillaComponent },
     
     //Ruta por defecto
     { path: '**', pathMatch: 'full', redirectTo: 'ingresar' }

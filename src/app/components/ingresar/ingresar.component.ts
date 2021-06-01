@@ -44,7 +44,10 @@ export class IngresarComponent implements OnInit {
             if (this.roles[0] == "ROLE_USER")
                 this.router.navigateByUrl("/registrar");
              else
-                this.router.navigateByUrl("/visualizar")
+             if (this.roles[0] == "ROLE_ADMIN")
+                this.router.navigateByUrl("/visualizar");
+             else
+                this.router.navigateByUrl("/casilla")
 
         }, (err : any) => {
             this.isLogged = false;
