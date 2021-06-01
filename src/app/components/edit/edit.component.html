@@ -1,77 +1,65 @@
-<div class="header"> </div>
+<div class="header"></div>
 <div class="container">
     <div>
-        <button mat-button color="warn" (click)="volver()">Volver</button>
+        <button mat-button="mat-button" color="warn" (click)="volver()">Volver</button>
     </div>
     <div class="card">
         <h2>Editar Promovido</h2>
-        <form name="form" (ngSubmit)="onSave()" #f="ngForm" novalidate>
+        <form name="form" (ngSubmit)="onSave()" #f="ngForm" novalidate="novalidate">
             <div class="form-group">
                 <mat-form-field appearance="outline" class="input">
                     <mat-label for="nombreVotante">Nombre</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="nombreVotante"
-                        [(ngModel)]="form.nombreVotante" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label for="domicilio">Domicilio</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="domicilio"
-                        [(ngModel)]="form.domicilio" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telefonos">
-                    <mat-label for="telcel">Telefono celular</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="telcel" [(ngModel)]="form.telcel"
-                        required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telefonos">
-                    <mat-label for="telcasa">Telefono de casa</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="telcasa"
-                        [(ngModel)]="form.telcasa" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="seccion">
-                    <mat-label for="seccion">Sección</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="seccion"
-                        [(ngModel)]="form.seccion" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telcasa">
-                    <mat-label for="colonia">Colonia</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="colonia"
-                        [(ngModel)]="form.colonia" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telcasa">
-                    <mat-label for="instragram">Instagram</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="instragram"
-                        [(ngModel)]="form.instragram" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telcasa">
-                    <mat-label for="facebook">Facebook</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="facebook"
-                        [(ngModel)]="form.facebook" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="telcasa">
-                    <mat-label for="red_social">Red Social</mat-label>
-                    <input matInput="matInput" type="text" class="form-control" name="red_social"
-                        [(ngModel)]="form.red_social" required autocomplete="off">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <button mat-raised-button="mat-raised-button" color="primary" [disabled]="!f.valid">Guardar</button>
-            </div>
-        </form>
-    </div>
-</div>
+                    <input matInput="matInput" type="text" class="form-control" name="nombreVotante" [(ngModel)]="form.nombreVotante" required="required" autocomplete="off"></mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label for="domicilio">Domicilio</mat-label>
+                        <input matInput="matInput" type="text" class="form-control" name="domicilio" [(ngModel)]="form.domicilio" required="required" autocomplete="off"></mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field appearance="outline" class="telefonos">
+                            <mat-label for="telcel">Telefono celular</mat-label>
+                            <input matInput="matInput" type="text" class="form-control" name="telcel" [(ngModel)]="form.telcel" required="required" autocomplete="off"></mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" class="telefonos">
+                                <mat-label for="telcasa">Telefono de casa</mat-label>
+                                <input matInput="matInput" type="text" class="form-control" name="telcasa" [(ngModel)]="form.telcasa" required="required" autocomplete="off"></mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field appearance="outline" class="seccion">
+                                    <mat-label for="seccion">Sección</mat-label>
+                                    <input matInput="matInput" type="text" class="form-control" name="seccion" [(ngModel)]="form.seccion" required="required" autocomplete="off"></mat-form-field>
+                                </div>
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="telcasa">
+                                        <mat-label for="colonia">Colonia</mat-label>
+                                        <input matInput="matInput" type="text" class="form-control" name="colonia" [(ngModel)]="form.colonia" required="required" autocomplete="off"></mat-form-field>
+                                    </div>
+                                    <div class="form-group">
+                                        <mat-form-field appearance="outline" class="telcasa">
+                                            <mat-label for="instragram">Instagram</mat-label>
+                                            <input matInput="matInput" type="text" class="form-control" name="instragram" [(ngModel)]="form.instragram" required="required" autocomplete="off"></mat-form-field>
+                                        </div>
+                                        <div class="form-group">
+                                            <mat-form-field appearance="outline" class="telcasa">
+                                                <mat-label for="facebook">Facebook</mat-label>
+                                                <input matInput="matInput" type="text" class="form-control" name="facebook" [(ngModel)]="form.facebook" required="required" autocomplete="off"></mat-form-field>
+                                            </div>
+                                            <div class="form-group">
+                                                <mat-form-field appearance="outline" class="telcasa">
+                                                    <mat-label for="red_social">Red Social</mat-label>
+                                                    <input matInput="matInput" type="text" class="form-control" name="red_social" [(ngModel)]="form.red_social" required="required" autocomplete="off"></mat-form-field>
+                                                </div>
+                                                <div class="form-group">
+                                                    <mat-form-field appearance="outline" class="telcasa">
+                                                        <mat-label for="comentarios">Comentarios</mat-label>
+                                                        <input matInput="matInput" type="text" class="form-control" name="comentarios" [(ngModel)]="form.comentarios" required="required" autocomplete="off"></mat-form-field>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button mat-raised-button="mat-raised-button" color="primary" [disabled]="!f.valid">Guardar</button>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>

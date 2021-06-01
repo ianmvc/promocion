@@ -28,9 +28,9 @@ export class IngresarComponent implements OnInit {
     }
 
     onLogin(): void {
-        this.router.navigateByUrl("/visualizar")
+        //this.router.navigateByUrl("/visualizar")
 
-        /*this.usuario = new LoginUsuario(this.form.nombreUsuario, this.form.password);
+        this.usuario = new LoginUsuario(this.form.nombreUsuario, this.form.password);
 
         this.authService.login(this.usuario).subscribe(data => {
             this.tokenService.setToken(data.token);
@@ -50,7 +50,7 @@ export class IngresarComponent implements OnInit {
             this.isLogged = false;
             this.isLoginFail = true;
             this.errorMsg = err.error.message;
-        });*/
+        });
     }
 
 }

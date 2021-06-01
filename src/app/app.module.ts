@@ -25,7 +25,8 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
 import { VisualizarComponent } from './components/visualizar/visualizar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { interceptorProvider } from './services/interceptor/interceptor.service';
-import { EditComponent } from './components/edit/edit.component'
+import { EditComponent } from './components/edit/edit.component';
+import { CasillaComponent } from './components/casilla/casilla.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditComponent } from './components/edit/edit.component'
     RegistroComponent,
     DialogComponent,
     DialogConfirmComponent,
-    EditComponent
+    EditComponent,
+    CasillaComponent
   ],
   imports: [
     APP_ROUTING,

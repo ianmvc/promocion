@@ -11,6 +11,7 @@ const APP_ROUTES: Routes = [
     { path: 'visualizar', component: VisualizarComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'edit/:id', component: EditComponent },
+    
     //Ruta por defecto
     { path: '**', pathMatch: 'full', redirectTo: 'ingresar' }
 ];

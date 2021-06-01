@@ -28,6 +28,7 @@ export class VisualizarComponent  implements OnInit, AfterViewInit  {
   authority: string;
   numberid: number;
   mensajeOK = '';
+  mensajeFail = '';
   ideditar = "";
   length: number;
 
@@ -100,23 +101,24 @@ export class VisualizarComponent  implements OnInit, AfterViewInit  {
   }
 
   editar(id){
-    console.log(id)
+    //console.log(id)
     this.numberid = id;
     this.serviceVotante.detalle(this.numberid).subscribe(data => {
       this.form = data;
       this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
       this.form.fecha_validado = this.fecha1
       this.form.validado = true
+      //console.log(id)
       this.serviceVotante.editar(this.form, this.numberid).subscribe(data => {
         this.form = data;
-        //console.log(this.form)
         this.openDialog(data.mensaje);
         this.ngOnInit();
         //this.router.navigateByUrl("/registrar");
       },
         (err: any) => {
-          //this.mensajeFail = err.error.mensaje;
-          //this.openDialog(this.mensajeFail);
+          this.mensajeFail = err.error.mensaje;
+          //console.log(err)
+          this.openDialog(this.mensajeFail);
         }
       );
       //console.log(this.form)
@@ -124,8 +126,9 @@ export class VisualizarComponent  implements OnInit, AfterViewInit  {
       //this.router.navigateByUrl("/registrar");
     },
       (err: any) => {
-        //this.mensajeFail = err.error.mensaje;
-        //this.openDialog(this.mensajeFail);
+        //console.log(err)
+        this.mensajeFail = err.error.mensaje;
+        this.openDialog(this.mensajeFail);
       }
     );
 
