@@ -1,69 +1,78 @@
 <div class="header"> </div>
 
 <div class="container">
-  <button mat-flat-button type="submit" color="secondary" (click)="logOut()">Salir</button>
-  <div class="card">
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element" > {{element.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <button mat-flat-button>
-            <td mat-cell *matCellDef="let element" [routerLink]="['/edit', element.id]">{{element.nombreVotante}}</td></button>
-        </ng-container>
-
-        <ng-container matColumnDef="domicilio">
-          <th mat-header-cell *matHeaderCellDef> Domicilio </th>
-          <td mat-cell *matCellDef="let element"> {{element.domicilio}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="telcel">
-          <th mat-header-cell *matHeaderCellDef> Telefono Celular </th>
-          <td mat-cell *matCellDef="let element"> {{element.telcel}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="telcasa">
-          <th mat-header-cell *matHeaderCellDef> Telefono Casa </th>
-          <td mat-cell *matCellDef="let element"> {{element.telcasa}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="seccion">
-          <th mat-header-cell *matHeaderCellDef> Sección </th>
-          <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fecha_agregado">
-          <th mat-header-cell *matHeaderCellDef> Fecha Agregado </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha_agregado}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fecha_validado">
-          <th mat-header-cell *matHeaderCellDef> Fecha Validado </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha_validado}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="validado">
-          <th mat-header-cell *matHeaderCellDef> Validado </th>
-          <td mat-cell *matCellDef="let element"> <button mat-raised-button="mat-raised-button" color="primary" 
-            (click)="validar(element.id)" [disabled]="element.validado != false">Validar</button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-      <mat-paginator [length]="length"
-                     [pageSize]="10" 
-                     [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <div>
+        <button mat-button color="warn" (click)="volver()">Volver</button>
     </div>
-  </div>
-</div>
-<div class="footer">
-
+    <div class="card">
+        <h2>Nuevo Promovido</h2>
+        <form name="form" (ngSubmit)="onCreate()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="input">
+                    <mat-label for="nombreVotante">Nombre</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="nombreVotante"
+                        [(ngModel)]="form.nombreVotante" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <!--<div class="form-group">
+                <mat-form-field appearance="outline" class="input">
+                    <mat-label for="domicilio">Domicilio</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="domicilio"
+                        [(ngModel)]="form.domicilio" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telefonos">
+                    <mat-label for="telcel">Telefono celular</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="telcel" [(ngModel)]="form.telcel"
+                        required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telefonos">
+                    <mat-label for="telcasa">Telefono de casa</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="telcasa"
+                        [(ngModel)]="form.telcasa" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="seccion">
+                    <mat-label for="seccion">Sección</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="seccion"
+                        [(ngModel)]="form.seccion" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="colonia">Colonia</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="colonia"
+                        [(ngModel)]="form.colonia" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="instragram">Instagram</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="instragram"
+                        [(ngModel)]="form.instragram" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="facebook">Facebook</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="facebook"
+                        [(ngModel)]="form.facebook" required autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="telcasa">
+                    <mat-label for="red_social">Red Social</mat-label>
+                    <input matInput="matInput" type="text" class="form-control" name="red_social"
+                        [(ngModel)]="form.red_social" required autocomplete="off">
+                </mat-form-field>
+            </div>-->
+            <div class="form-group">
+                <button mat-raised-button="mat-raised-button" color="primary" [disabled]="!f.valid">Crear</button>
+            </div>
+        </form>
+    </div>
 </div>

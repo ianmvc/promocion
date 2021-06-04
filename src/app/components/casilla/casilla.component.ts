@@ -1,13 +1,12 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { RegistroService } from '../../services/registro/registro.service';
-import { Votante } from '../../common/votante';
-import { TokenService } from '../../services/token/token.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
+import { Votante } from '../../common/votante';
+import { RegistroService } from '../../services/registro/registro.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogConfirmComponent } from '../../common/dialog-confirm/dialog-confirm.component';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { DatePipe } from '@angular/common';
+import {TokenService} from '../../services/token/token.service';
 
 @Component({
   selector: 'app-casilla',
@@ -15,123 +14,66 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./casilla.component.scss']
 })
 export class CasillaComponent implements OnInit {
-  dataSource: Votante[] = [];
-
-  displayedColumns: string[] = ['position', 'nombre', 'domicilio', 'telcel', 'telcasa', 'seccion', 'fecha_agregado', 'fecha_validado', 'validado'];
-  //dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
   form: any = {};
-  isLogin = false;
-  roles: string[];
-  authority: string;
-  numberid: number;
-  mensajeOK = '';
+  votante: Votante;
+  creado = false;
+  failVotante = false;
   mensajeFail = '';
-  ideditar = "";
-  length: number;
+  mensajeOK = '';
+  altavotante: FormGroup;
+  loading = false;
+  username = '';
 
   fecha1: string = '';
   myDate = new Date();
+
   constructor(
-    private serviceVotante: RegistroService,
-    private tokenService: TokenService,
     private router: Router,
     private dialog: MatDialog,
+    private serviceVotante: RegistroService,
     private datePipe: DatePipe,
+    private tokenService : TokenService
   ) { }
-  ngAfterViewInit(): void {
-    //this.dataSource.paginator = this.paginator;
-  }
+
 
   ngOnInit(): void {
-    this.lista();
-    if (this.tokenService.getToken()) {
-      this.isLogin = true;
-      this.roles = [];
-      this.roles = this.tokenService.getAuthorities();
-      this.roles.every(rol => {
-        if (rol === 'ROLE_ADMIN') {
-          this.authority = 'admin';
-          return false;
-        }
-        this.authority = 'user';
-        return true;
-      });
-    }
+    //this.form = new FormGroup({
+      //nombre: new FormControl("", [Validators.required]),
+      //domicilio: new FormControl("", [Validators.required]),
+      //telcel: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]), 
+      //telcasa: new FormControl("", [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]),
+      //seccion: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      //fecha_agregado: new FormControl("")
+    //});
   }
 
-  lista(): void {
-    this.serviceVotante.lista().subscribe(data => {
-      this.dataSource = data;
-      this.length = this.dataSource.length;
-      //console.log(this.dataSource.length)
+  onCreate(): void {
+    this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
+    this.form.fecha_agregado = this.fecha1
+    this.form.validado = "false"
+    //console.log(this.form)
+    this.username = this.tokenService.getUserName();
+    this.form.usuario = this.username
+    console.log(this.username) 
+    console.log(this.form) 
+    this.serviceVotante.crear(this.form).subscribe(data => {
+      this.mensajeOK = data.mensaje;
+      this.openDialog(this.mensajeOK);
+      this.creado = true;
+      this.failVotante = false;
+      this.router.navigateByUrl("/registrar");
     },
       (err: any) => {
-        console.log(err);
-      }
-    );
-  }
-
-  logOut(): void {
-    this.tokenService.logOut();
-    this.isLogin = false;
-    this.authority = '';
-    this.router.navigate(['home']);
-  }
-
-  validar(id){
-    //console.log(id)
-    this.ideditar = id;
-    this.mensajeOK = "El registro se validará, ¿Está seguro que desea ratificar como verdadera la información proporcionada?"
-    this.openDialogConfirm(this.mensajeOK);
-  }
-
-  openDialogConfirm(mensaje: string, status?: string): void {
-    const dialogRef = this.dialog.open(DialogConfirmComponent, {
-      width: '400px',
-      data: { mensaje: mensaje }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result == "Ok")
-      this.editar(this.ideditar);
-    });
-  }
-
-  editar(id){
-    //console.log(id)
-    this.numberid = id;
-    this.serviceVotante.detalle(this.numberid).subscribe(data => {
-      this.form = data;
-      this.fecha1 = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
-      this.form.fecha_validado = this.fecha1
-      this.form.validado = true
-      //console.log(id)
-      this.serviceVotante.editar(this.form, this.numberid).subscribe(data => {
-        this.form = data;
-        this.openDialog(data.mensaje);
-        this.ngOnInit();
-        //this.router.navigateByUrl("/registrar");
-      },
-        (err: any) => {
-          this.mensajeFail = err.error.mensaje;
-          //console.log(err)
-          this.openDialog(this.mensajeFail);
-        }
-      );
-      //console.log(this.form)
-      //this.openDialog(this.mensajeOK);
-      //this.router.navigateByUrl("/registrar");
-    },
-      (err: any) => {
-        //console.log(err)
         this.mensajeFail = err.error.mensaje;
         this.openDialog(this.mensajeFail);
+        this.creado = false;
+        this.failVotante = true;
       }
     );
+  }
 
+  volver(): void {
+    window.history.back();
   }
 
   openDialog(mensaje: string, status?: string): void {
