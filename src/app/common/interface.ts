@@ -33,3 +33,11 @@ export class LoginUsuario {
         this.password = password;
     }
 }
+
+export class rcasilla {
+    nombreUsuario: string;
+    seccion: string;
+    casilla: string;
+    hora: string;
+    registrado:string;
+}

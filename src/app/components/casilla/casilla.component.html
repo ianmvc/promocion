@@ -5,13 +5,14 @@
         <button mat-button color="warn" (click)="volver()">Volver</button>
     </div>
     <div class="card">
-        <h2>Nuevo Promovido</h2>
+        <h2>Registrar votante</h2>
         <form name="form" (ngSubmit)="onCreate()" #f="ngForm" novalidate>
             <div class="form-group">
                 <mat-form-field appearance="outline" class="input">
-                    <mat-label for="nombreVotante">Nombre</mat-label>
+                    <mat-label for="nombreVotante">Nombre completo</mat-label>
                     <input matInput="matInput" type="text" class="form-control" name="nombreVotante"
-                        [(ngModel)]="form.nombreVotante" required autocomplete="off">
+                        [(ngModel)]="form.nombreVotante" required autocomplete="off" 
+                        oninput="this.value = this.value.toUpperCase()">
                 </mat-form-field>
             </div>
             <!--<div class="form-group">

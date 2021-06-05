@@ -35,19 +35,22 @@ export class IngresarComponent implements OnInit {
         this.authService.login(this.usuario).subscribe(data => {
             this.tokenService.setToken(data.token);
             this.tokenService.setUserName(data.nombreUsuario);
+            console.log(data)
             this.tokenService.setAuthorities(data.authorities);
 
             this.isLogged = true;
             this.isLoginFail = false;
             this.roles = this.tokenService.getAuthorities();
-            //console.log(this.roles)
+            console.log(this.roles)
             if (this.roles[0] == "ROLE_USER")
                 this.router.navigateByUrl("/registrar");
-             else
+             //else{
              if (this.roles[0] == "ROLE_ADMIN")
                 this.router.navigateByUrl("/visualizar");
-             else
+             //else
+             if (this.roles[0] == "ROLE_CASILLA")
                 this.router.navigateByUrl("/casilla")
+            //}
 
         }, (err : any) => {
             this.isLogged = false;
