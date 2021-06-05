@@ -12,7 +12,8 @@
                     <mat-label for="nombreVotante">Nombre completo</mat-label>
                     <input matInput="matInput" type="text" class="form-control" name="nombreVotante"
                         [(ngModel)]="form.nombreVotante" required autocomplete="off" 
-                        oninput="this.value = this.value.toUpperCase()">
+                        oninput="this.value = this.value.toUpperCase()"
+                        >
                 </mat-form-field>
             </div>
             <!--<div class="form-group">

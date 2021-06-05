@@ -35,9 +35,9 @@ export class LoginUsuario {
 }
 
 export class rcasilla {
-    nombreUsuario: string;
+    nombreVotante: string;
     seccion: string;
     casilla: string;
     hora: string;
-    registrado:string;
+    registrado: boolean;
 }

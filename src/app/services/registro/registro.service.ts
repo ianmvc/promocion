@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Votante } from '../../common/votante';
-import { ApiUrl } from '../../globals';
+import { ApiUrl, ApiUrlRc } from '../../globals';
 
 const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})};
 
@@ -25,6 +25,10 @@ export class RegistroService {
   
     public detalle(id: number): Observable<Votante> {
       return this.httpClient.get<Votante>(ApiUrl + 'detalle/' + id, cabecera);
+    }
+
+    public datos(nombre: string): Observable<Votante> {
+      return this.httpClient.get<Votante>(ApiUrl + 'datos/' + nombre, cabecera);
     }
   
     public crear(producto: Votante): Observable<any> {

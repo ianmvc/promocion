@@ -14,4 +14,5 @@ export class Votante {
 	facebook: string;
 	red_social: string;
 	usuario: string;
+    voto: boolean;
 }
